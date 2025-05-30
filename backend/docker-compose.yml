@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - AUTH_SERVICE_URL=http://auth-service:3001
+      - STUDENT_SERVICE_URL=http://student-service:3002
+      - ADMIN_SERVICE_URL=http://admin-service:3003
+    depends_on:
+      - auth-service
+      - student-service
+      - admin-service
+
+  auth-service:
+    build: ./auth-service
+    environment:
+      - PORT=3001
+      - MONGO_URI=mongodb://mongodb:27017/auth_db
+      - JWT_SECRET=18808b9225fdc06332515698e792fa90fe33464119fcc6da4ce8f8785c8b41be
+    depends_on:
+      - mongodb
+
+  student-service:
+    build: ./student-service
+    environment:
+      - PORT=3002
+      - MONGO_URI=mongodb://mongodb:27017/student_db
+      - JWT_SECRET=18808b9225fdc06332515698e792fa90fe33464119fcc6da4ce8f8785c8b41be
+    depends_on:
+      - mongodb
+
+  admin-service:
+    build: ./admin-service
+    environment:
+      - PORT=3003
+      - MONGO_URI=mongodb://mongodb:27017/admin_db
+      - JWT_SECRET=18808b9225fdc06332515698e792fa90fe33464119fcc6da4ce8f8785c8b41be
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:

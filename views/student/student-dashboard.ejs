@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <h1>Student Dashboard</h1>
+  <nav class="nav">
+
+    <ul>
+      <li><a href="#" onclick="showSection('calendar')">Timetable</a></li>
+      <li><a href="#" onclick="showSection('registeredCourses')">Registered Courses</a></li>
+      <li><a href="#" onclick="showSection('availableCourses')">Available Courses</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="dashboard-container">
+    <!-- Calendar Section -->
+    <div class="calendar" id="calendar">
+      <h2>My Timetable</h2>
+      <table class="timetable">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Time slots will be dynamically added here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Registered Courses Section -->
+    <div class="registered-courses hidden" id="registeredCourses">
+      <h2>My Registered Courses</h2>
+      <div id="registeredCourseList" class="course-list">
+        <!-- Registered courses will be dynamically populated here -->
+      </div>
+    </div>
+
+    <!-- Available Courses Section -->
+    <div class="available-courses hidden" id="availableCourses">
+      <h2>Available Courses</h2>
+      <form id="filterForm" class="filter-section">
+        <div class="input-group">
+          <label for="department">Department</label>
+          <input type="text" id="department" placeholder="Department">
+        </div>
+        <div class="input-group">
+          <label for="seats">Seats</label>
+          <input type="number" id="seats" placeholder="Seats">
+        </div>
+        <div class="input-group">
+          <label for="prerequisites">Prerequisites</label>
+          <input type="text" id="prerequisites" placeholder="Prerequisites">
+        </div>
+        <div class="input-group">
+          <label for="time">Time</label>
+          <input type="text" id="time" placeholder="Time (e.g., 14:00 - 16:00)">
+        </div>
+        <button type="submit">Filter</button>
+      </form>
+      <div id="availableCourseList" class="course-list">
+        <!-- Available courses will be dynamically populated here -->
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/student.js"></script>
+</body>
+
+</html>

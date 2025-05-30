@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+  
+  <h1>Admin Dashboard</h1>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+
+    <ul>
+      <li><a href="#" onclick="showSection('courseManagement')">Course Management</a></li>
+      <li><a href="#" onclick="showSection('studentManagement')">Student Management</a></li>
+      <li><a href="#" onclick="showSection('seatManagement')">Seat Management</a></li>
+      <li><a href="#" onclick="showSection('adminSection')">Registration Management</a></li>
+      <li><a href="#" onclick="showSection('reports')">Reports</a></li>
+ 
+
+      <!-- <li><a href="#" onclick="showSection('adminSection')">Manage Registrations</a></li> -->
+
+    </ul>
+  </nav>
+
+  <!-- Course Management -->
+  <!-- Course Management -->
+  <!-- Course Management -->
+  <div id="courseManagement" class="management-section">
+    <h2>Course Management</h2>
+    <!-- Add Course Form -->
+    <form id="addCourseForm">
+      <div class="input-group">
+        <label for="courseCode">Course Code</label>
+        <input type="text" id="courseCode" required>
+      </div>
+      <div class="input-group">
+        <label for="courseName">Course Name</label>
+        <input type="text" id="courseName" required>
+      </div>
+      <div class="input-group">
+        <label for="department">Department</label>
+        <input type="text" id="department" required>
+      </div>
+      <div class="input-group">
+        <label for="days">Days (comma-separated, e.g., Mon,Wed)</label>
+        <input type="text" id="days" required>
+      </div>
+      <div class="input-group">
+        <label for="startTime">Start Time (e.g., 10:00)</label>
+        <input type="text" id="startTime" required>
+      </div>
+      <div class="input-group">
+        <label for="endTime">End Time (e.g., 11:00)</label>
+        <input type="text" id="endTime" required>
+      </div>
+      <div class="input-group">
+        <label for="seats">Seats</label>
+        <input type="number" id="seats" required>
+      </div>
+      <div class="input-group">
+        <label for="prerequisites">Prerequisites (comma-separated)</label>
+        <input type="text" id="prerequisites">
+      </div>
+      <button type="submit">Add Course</button>
+    </form>
+
+    <!-- Update Course Form -->
+    <form id="updateCourseForm">
+      <h3>Update Course</h3>
+      <div class="input-group">
+        <label for="updateCourseCode">Course Code</label>
+        <input type="text" id="updateCourseCode" required>
+      </div>
+      <div class="input-group">
+        <label for="updateCourseName">Course Name</label>
+        <input type="text" id="updateCourseName">
+      </div>
+      <div class="input-group">
+        <label for="updateDepartment">Department</label>
+        <input type="text" id="updateDepartment">
+      </div>
+      <div class="input-group">
+        <label for="updateDays">Days (comma-separated, e.g., Mon,Wed)</label>
+        <input type="text" id="updateDays">
+      </div>
+      <div class="input-group">
+        <label for="updateStartTime">Start Time (e.g., 10:00)</label>
+        <input type="text" id="updateStartTime">
+      </div>
+      <div class="input-group">
+        <label for="updateEndTime">End Time (e.g., 11:00)</label>
+        <input type="text" id="updateEndTime">
+      </div>
+      <div class="input-group">
+        <label for="updateSeats">Seats</label>
+        <input type="number" id="updateSeats">
+      </div>
+      <div class="input-group">
+        <label for="updatePrerequisites">Prerequisites (comma-separated)</label>
+        <input type="text" id="updatePrerequisites">
+      </div>
+      <button type="submit">Update Course</button>
+    </form>
+
+    <!-- Delete Course Form -->
+    <form id="deleteCourseForm">
+      <h3>Delete Course</h3>
+      <div class="input-group">
+        <label for="deleteCourseCode">Course Code</label>
+        <input type="text" id="deleteCourseCode" required>
+      </div>
+      <button type="submit">Delete Course</button>
+    </form>
+  </div>
+
+  <div id="adminSection" class="management-section">
+    <h2>Manage Student Registrations</h2>
+    <div id="studentRegistrationsList" class="course-list">
+      <!-- Student registrations will be dynamically populated here -->
+    </div>
+  </div>
+
+  <!-- Student Management -->
+  <div id="studentManagement" class="management-section" style="display: none;">
+    <h2>Student Management</h2>
+    <form id="overrideRegistrationForm">
+      <div class="input-group">
+        <label for="courseId">Course ID</label>
+        <input type="text" id="courseId" required>
+      </div>
+      <div class="input-group">
+        <label for="studentId">Student ID</label>
+        <input type="text" id="studentId" required>
+      </div>
+      <button type="submit">Override Registration</button>
+    </form>
+  </div>
+
+  <!-- Seat Management -->
+  <div id="seatManagement" class="management-section" style="display: none;">
+    <h2>Seat Management</h2>
+    <form id="adjustSeatsForm">
+      <div class="input-group">
+        <label for="courseIdSeats">Course ID</label>
+        <input type="text" id="courseIdSeats" required>
+      </div>
+      <div class="input-group">
+        <label for="newSeats">New Seats</label>
+        <input type="number" id="newSeats" required>
+      </div>
+      <button type="submit">Adjust Seats</button>
+    </form>
+  </div>
+
+  <!-- Reports -->
+  <div id="reports" class="management-section" style="display: none;">
+    <h2>Reports</h2>
+    <button id="generateReports">Generate Reports</button>
+    <div id="reportsOutput"></div>
+  </div>
+
+  <script src="/js/admin.js"></script>
+</body>
+
+</html>
